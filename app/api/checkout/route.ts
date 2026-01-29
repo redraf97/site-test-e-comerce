@@ -1,29 +1,30 @@
 // app/api/checkout/route.ts
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { products } from '@/data/products'; // On récupère nos produits
+import { products } from '@/data/products';
 
-// On initialise Stripe avec la clé secrète
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2025-12-15.clover', 
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY is missing');
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2025-12-15.clover', // (Ou ta version actuelle)
 });
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { productId } = body;
-
-    // 1. On retrouve le produit dans notre liste pour sécuriser le prix
-    // (On ne fait jamais confiance au prix envoyé par le frontend !)
     const product = products.find((p) => p.id === productId);
 
     if (!product) {
       return NextResponse.json({ error: "Produit introuvable" }, { status: 404 });
     }
-    
-    const baseUrl = 'https://site-test-e-comerce.vercel.app';
 
-    // 2. On crée la session Stripe
+    // 👇 C'EST ICI QU'ON CHANGE 👇
+    // On met l'URL réelle de ton site (sans slash à la fin)
+    const baseUrl = 'https://site-test-e-comerce.vercel.app'; 
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -32,19 +33,19 @@ export async function POST(request: Request) {
             currency: 'eur',
             product_data: {
               name: product.name,
-              images: [product.image],
+              images: [product.image], // Optionnel si l'URL image n'est pas une URL web complète
             },
-            unit_amount: product.price, // Le prix en centimes (ex: 2000 pour 20.00€)
+            unit_amount: product.price,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      success_url: `${request.headers.get('origin')}/success`, // Page de succès
-      cancel_url: `${request.headers.get('origin')}/cancel`,   // Page d'annulation
+      // 👇 On utilise la variable baseUrl
+      success_url: `${baseUrl}/success`,
+      cancel_url: `${baseUrl}/cancel`,
     });
 
-    // 3. On renvoie l'URL de paiement au frontend
     return NextResponse.json({ url: session.url });
 
   } catch (err: any) {
