@@ -1,0 +1,68 @@
+.hero {
+  /* On met un dégradé sombre très classe en attendant une vraie photo */
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  height: 70vh; /* Prend 70% de la hauteur de l'écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.content {
+  max-width: 800px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.subtitle {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.button {
+  display: inline-block;
+  background: white;
+  color: black;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Petite animation d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Adaptation Mobile */
+@media (max-width: 768px) {
+  .title { font-size: 2.5rem; }
+  .hero { height: 60vh; }
+}

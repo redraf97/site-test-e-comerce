@@ -12,7 +12,7 @@ export default function Footer() {
           <h4>Liens utiles</h4>
           <a href="#">Contact</a>
           <a href="#">Livraisons & Retours</a>
-          <a href="#">Mentions Légales</a>
+          <a href="/legal">Mentions Légales</a>
         </div>
         <div className={styles.column}>
           <h4>Réseaux</h4>

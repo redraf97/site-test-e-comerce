@@ -1,6 +1,7 @@
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import Hero from '../components/Hero';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         Panier (0)
         </div>
       </header>
+      <Hero />
 
       <main>
         {/* Titre de la section */}
