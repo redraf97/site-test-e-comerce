@@ -5,8 +5,8 @@ export default function LegalPage() {
       
       <p><strong>Éditeur du site :</strong><br/>
       Mikianeli<br/>
-      [Adresse de ton ami]<br/>
-      Contact : [Email de ton ami]</p>
+      [Adresse]<br/>
+      Contact : [Email]</p>
 
       <h2 style={{ fontSize: '1.5rem', marginTop: '30px' }}>Hébergement</h2>
       <p>Ce site est hébergé par Vercel Inc.<br/>
