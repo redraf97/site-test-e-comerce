@@ -1,4 +1,3 @@
-// app/api/checkout/route.ts
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { products } from '@/data/products';
@@ -8,7 +7,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2025-12-15.clover', // (Ou ta version actuelle)
+  apiVersion: '2025-01-27.acacia', // Utilise la version suggérée par VS Code
 });
 
 export async function POST(request: Request) {
@@ -21,8 +20,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Produit introuvable" }, { status: 404 });
     }
 
-    // 👇 C'EST ICI QU'ON CHANGE 👇
-    // On met l'URL réelle de ton site (sans slash à la fin)
+    // L'URL de ton site
     const baseUrl = 'https://site-test-e-comerce.vercel.app'; 
 
     const session = await stripe.checkout.sessions.create({
@@ -33,7 +31,9 @@ export async function POST(request: Request) {
             currency: 'eur',
             product_data: {
               name: product.name,
-              images: [product.image], // Optionnel si l'URL image n'est pas une URL web complète
+              // 👇 C'EST LA CORRECTION MAGIQUE 👇
+              // On colle l'URL du site + le chemin de l'image (ex: https://.../sneakers.jpg)
+              images: [`${baseUrl}${product.image}`], 
             },
             unit_amount: product.price,
           },
@@ -41,7 +41,6 @@ export async function POST(request: Request) {
         },
       ],
       mode: 'payment',
-      // 👇 On utilise la variable baseUrl
       success_url: `${baseUrl}/success`,
       cancel_url: `${baseUrl}/cancel`,
     });
