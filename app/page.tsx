@@ -1,13 +1,22 @@
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
     <>
       {/* Barre de navigation */}
       <header>
-        <h1>STORE.</h1>
-        <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>PANIER (0)</div>
+        <div className="brand-logo">MIKIANELI</div>
+        <div style={{ 
+        fontSize: '0.9rem', 
+        fontWeight: 'bold',
+        padding: '8px 15px',
+        background: '#f0f0f0',
+        borderRadius: '20px'
+        }}>
+        Panier (0)
+        </div>
       </header>
 
       <main>
@@ -30,6 +39,7 @@ export default function Home() {
           ))}
         </div>
       </main>
+      <Footer />
     </>
   );
 }
