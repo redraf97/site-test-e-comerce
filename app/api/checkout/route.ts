@@ -20,6 +20,8 @@ export async function POST(request: Request) {
     if (!product) {
       return NextResponse.json({ error: "Produit introuvable" }, { status: 404 });
     }
+    
+    const baseUrl = 'https://site-test-e-comerce.vercel.app';
 
     // 2. On crée la session Stripe
     const session = await stripe.checkout.sessions.create({
