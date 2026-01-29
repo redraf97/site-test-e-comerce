@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main style={{ padding: '40px', background: '#fafafa', minHeight: '100vh' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '40px', color: '#333' }}>
-        Mikianeli
+        MIKIANELI
       </h1>
       
       <div style={{ 

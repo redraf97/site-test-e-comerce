@@ -15,7 +15,7 @@ export const products: Product[] = [
     name: "Sneakers Ultra",
     price: 12000, 
     currency: "EUR",
-    image: "https://via.placeholder.com/300",
+    image: "/airforce.jpg",
     description: "Le confort ultime pour tes pieds."
   },
   {
@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: "Hoodie Dev",
     price: 4500, 
     currency: "EUR",
-    image: "https://via.placeholder.com/300",
+    image: "/hoodie.jpg",
     description: "Code en style, hiver comme été."
   }
 ];
