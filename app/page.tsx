@@ -19,11 +19,19 @@ export default function Home() {
         Panier (0)
         </div>
       </header>
+      
       <Hero />
 
       <main>
-        {/* Titre de la section */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        {/* 👇 C'EST ICI QUE J'AI FAIT LA CORRECTION 👇 */}
+        <div 
+          id="shop" 
+          style={{ 
+            textAlign: 'center', 
+            marginBottom: '60px',
+            scrollMarginTop: '100px' /* Empêche le titre d'être caché par le menu */
+          }}
+        >
           <h2 style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '10px' }}>
             Nouveautés
           </h2>

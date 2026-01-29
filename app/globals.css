@@ -50,17 +50,21 @@ main {
 }
 
 .brand-logo {
-  font-family: 'Arial Black', sans-serif; /* Une police épaisse et impactante */
+  font-family: 'Arial Black', sans-serif; 
   font-size: 1.8rem;
   text-transform: uppercase;
-  letter-spacing: 4px; /* Espace les lettres pour un effet luxe */
+  letter-spacing: 4px; 
   font-weight: 900;
   color: var(--foreground);
   position: relative;
 }
 
-/* Petit point d'accent à la fin (optionnel, style moderne) */
+
 .brand-logo::after {
   content: '.';
-  color: #0070f3; /* Petite touche de bleu, ou change en noir */
+  color: #0070f3; 
+}
+
+html {
+  scroll-behavior: smooth;
 }
