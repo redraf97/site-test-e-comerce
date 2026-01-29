@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     if (data.url) {
       window.location.href = data.url;
     } else {
-      alert("Erreur lors de la création du paiement");
+      alert(data.error || "Erreur inconnue");
     }
   };
 
