@@ -6,19 +6,6 @@ import Hero from '../components/Hero';
 export default function Home() {
   return (
     <>
-      {/* Barre de navigation */}
-      <header>
-        <div className="brand-logo">MIKIANELI</div>
-        <div style={{ 
-        fontSize: '0.9rem', 
-        fontWeight: 'bold',
-        padding: '8px 15px',
-        background: '#f0f0f0',
-        borderRadius: '20px'
-        }}>
-        Panier (0)
-        </div>
-      </header>
       
       <Hero />
 
